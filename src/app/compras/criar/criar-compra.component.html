@@ -1,0 +1,33 @@
+<div class="form-inline" [formGroup]="form">
+<div class="card">
+    <div class="card-body">
+        <div class="form-group">
+          <label class="col-md-4" for="nomeDoSolicitante">Nome do Solicitante</label>
+          <input type="text" class="form-control" id="nomeDoSolicitante" name="nomeDoSolicitante"
+           formControlName="nomeDoSolicitante" required/>
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('nomeDoSolicitante').valid">
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4" for="valorDoItem">Valor do Item</label>
+            <input required type="text" class="form-control" id="valorDoItem" name="valorDoItem"
+             formControlName="valorDoItem" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+             />
+            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('valorDoItem').valid">
+                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+            </div>
+          </div>
+
+        <div class="form-group">
+          <label class="col-md-4">Descrição do Item</label>
+          <input type="text" class="form-control" />
+        </div>
+
+         <button type="button" class="btn btn-success" (click)="salvar()" id="idBtnSalvarFecharCompra">
+                <i class="zmdi zmdi-shield-check"></i> Salvar e Fechar
+            </button>
+    </div>
+  </div>
+</div>
