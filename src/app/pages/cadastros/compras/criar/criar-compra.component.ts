@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import ComprasModel from 'src/models/comprasModel';
+import { ComprasModel } from '../models/comprasModel';
 import { ComprasService } from 'src/app/services/compras.service';
 import { ServicesMessages } from 'src/app/services/service-mensagem';
 
@@ -10,6 +10,8 @@ import { ServicesMessages } from 'src/app/services/service-mensagem';
   styleUrls: ['./criar-compra.component.css']
 })
 export class CriarComprasComponent implements OnInit {
+  ngOnInit() {
+  }
 
   public comprasModel: ComprasModel;
   @Input() public idCompra: number;
@@ -20,9 +22,6 @@ export class CriarComprasComponent implements OnInit {
     private serviceCompra: ComprasService,
     private servicesMessages: ServicesMessages) {
     this.criarFormulario();
-  }
-
-  ngOnInit() {
   }
 
   criarFormulario() {

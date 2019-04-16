@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ConsultarComprasComponent } from './compras/consultar/consultar-compras.component';
-import { CriarComprasComponent } from './compras/criar/criar-compra.component';
 
 const routes: Routes = [
   {
-    path: 'compras/consultar',
-    component: ConsultarComprasComponent
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
   {
-    path: 'compras/criar',
-    component: CriarComprasComponent
+    path: '',
+    children: [
+      {
+        path: 'compras',
+        loadChildren: './pages/cadastros/compras/compras-module#ComprasModule'
+      }
+    ]
   },
 ];
 

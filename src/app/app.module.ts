@@ -6,17 +6,18 @@ import { AppComponent } from './app.component';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CurrencyMaskModule } from "ng2-currency-mask";
-import { HttpClientModule } from '@angular/common/http'; 
-import { CriarComprasComponent } from './compras/criar/criar-compra.component';
-import { ConsultarComprasComponent } from './compras/consultar/consultar-compras.component';
-import { ComprasService } from './services/compras.service';
+import { HttpClientModule  } from '@angular/common/http'; 
 import { ServicesMessages, Notificacao } from './services/service-mensagem';
+import { ComprasConsultarComponent } from './pages/cadastros/compras/compras-consultar/compras-consultar.component';
+import { ComprasCadastrarComponent } from './pages/cadastros/compras/compras-cadastrar/compras-cadastrar.component';
+import { ComprasPainelComponent } from './pages/cadastros/compras/compras-painel/compras-painel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CriarComprasComponent,
-    ConsultarComprasComponent
+    ComprasConsultarComponent,
+    ComprasCadastrarComponent,
+    ComprasPainelComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,7 @@ import { ServicesMessages, Notificacao } from './services/service-mensagem';
     SlimLoadingBarModule,
     ReactiveFormsModule,
     CurrencyMaskModule,
-    HttpClientModule 
+    HttpClientModule
   ],
   providers: [ ServicesMessages ],
   bootstrap: [AppComponent]
