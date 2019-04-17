@@ -9,14 +9,15 @@ import { Router } from '@angular/router';
 })
 export class ConsultarComprasComponent implements OnInit {
   //public comprasModel: ComprasModel;
-
+  public display: boolean = false;
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   novo() {
-    this.router.navigate(['/compras/criar', '']);
+    this.display = true;
+   // this.router.navigate(['/compras/criar']);
   }
 
 }

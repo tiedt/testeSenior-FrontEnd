@@ -1,6 +1,6 @@
 <div class="text-right">
     <a class="btn btn-sucess" id="btnNovoContrato">
-     <button type="button" class="btn btn-success" (click)="novo">Novo</button>
+     <button type="button" class="btn btn-success" (click)="novo()">Novo</button>
     </a>
 </div>
 <br>
@@ -26,3 +26,35 @@
         </tr>
     </tbody> -->
 </table>
+
+<p-dialog header="Solicitar Compra" [(visible)]="display" [style]="{'width' : '750px'}">
+    <div class="form-group">
+        <input type="text" class="form-control" id="nomeDoSolicitante" name="nomeDoSolicitante"
+          formControlName="nomeDoSolicitante"  placeholder="Nome do Solicitante" required />
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('nomeDoSolicitante').valid">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <input required type="text" class="form-control" id="valorDoItem" name="valorDoItem" formControlName="valorDoItem"
+          currencyMask [options]="{ align: 'left' , prefix: 'R$ ', thousands: '.', decimal: ','}"  placeholder="Valor do Item"/>
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('valorDoItem').valid">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Descrição do Item"/>
+      </div>
+      <p-footer>
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" (click)="close()" id="idBtnFecharObjeto">
+                <i class="zmdi zmdi-close-circle"></i> Fechar
+            </button>
+            <button type="button" class="btn btn-success" (click)="salvar()" id="idBtnSalvarObjeto">
+                <i class="zmdi zmdi-shield-check"></i> Salvar
+            </button>
+        </div>
+    </p-footer>
+</p-dialog>

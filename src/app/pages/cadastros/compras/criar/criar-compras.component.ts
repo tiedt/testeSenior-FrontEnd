@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { ComprasModel } from 'src/app/models/comprasModel';
 import { ComprasService } from 'src/app/services/compras.service';
 import { ServicesMessages } from 'src/app/services/service-mensagem';
+import { DialogModule } from 'primeng/dialog';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { ServicesMessages } from 'src/app/services/service-mensagem';
 export class CriarComprasComponent implements OnInit {
   public comprasModel: ComprasModel;
   public submitted: boolean;
+  display: boolean = false;
   public loading = false;
   @Input() public idCompra: number;
   @Output() public onClose = new EventEmitter<any>();
@@ -32,9 +34,9 @@ export class CriarComprasComponent implements OnInit {
 
   criarFormulario() {
     this.form = this.formBuilder.group({
-      nomeDoSolicitante: new FormControl (['', Validators.required]),
-      valorDoItem: new FormControl (['', Validators.required]),
-      descricaoDoItem: new FormControl (['', Validators.required])
+      nomeDoSolicitante: new FormControl(['', Validators.required]),
+      valorDoItem: new FormControl(['', Validators.required]),
+      descricaoDoItem: new FormControl(['', Validators.required])
     });
   }
   salvar() {
@@ -61,5 +63,8 @@ export class CriarComprasComponent implements OnInit {
     this.servicesMessages.notificacao.exibirMensagemDeSucesso('Solicitação de Compra Realizada com Sucesso');
     this.idCompra = response.idCompra;
     this.onSalvar.emit();
+  }
+  showDialog() {
+    this.display = true;
   }
 }

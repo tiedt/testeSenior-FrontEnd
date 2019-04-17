@@ -1,6 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
@@ -11,7 +10,7 @@ import { ServicesMessages, Notificacao } from './services/service-mensagem';
 import { CriarComprasComponent } from './pages/cadastros/compras/criar/criar-compras.component';
 import { ConsultarComprasComponent } from './pages/cadastros/compras/consultar/consultar-compras.component';
 import { ComprasPainelComponent } from './pages/cadastros/compras/compras-painel/compras-painel.component';
-
+import { GrowlModule,ConfirmDialogModule,ConfirmationService,DialogModule,DropdownModule,AutoCompleteModule,CalendarModule} from 'primeng/primeng';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +19,20 @@ import { ComprasPainelComponent } from './pages/cadastros/compras/compras-painel
     ComprasPainelComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SlimLoadingBarModule,
     ReactiveFormsModule,
     CurrencyMaskModule,
-    HttpClientModule
+    HttpClientModule,
+    GrowlModule,
+    ConfirmDialogModule,
+    DialogModule,
+    DropdownModule,
+    AutoCompleteModule,
+    CalendarModule
   ],
-  providers: [ ServicesMessages ],
+  providers: [ ServicesMessages, ConfirmationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
