@@ -4,8 +4,11 @@ import { Observable } from 'rxjs';
 import { ComprasModel } from '../models/comprasModel';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ComprasService {
+  
   constructor(private http: HttpClient) { }
 
   adicionarCompra(model: ComprasModel): Observable<any> {

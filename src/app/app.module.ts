@@ -8,15 +8,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { HttpClientModule  } from '@angular/common/http'; 
 import { ServicesMessages, Notificacao } from './services/service-mensagem';
-import { ComprasConsultarComponent } from './pages/cadastros/compras/compras-consultar/compras-consultar.component';
-import { ComprasCadastrarComponent } from './pages/cadastros/compras/compras-cadastrar/compras-cadastrar.component';
+import { CriarComprasComponent } from './pages/cadastros/compras/criar/criar-compras.component';
+import { ConsultarComprasComponent } from './pages/cadastros/compras/consultar/consultar-compras.component';
 import { ComprasPainelComponent } from './pages/cadastros/compras/compras-painel/compras-painel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ComprasConsultarComponent,
-    ComprasCadastrarComponent,
+    CriarComprasComponent,
+    ConsultarComprasComponent,
     ComprasPainelComponent
   ],
   imports: [
