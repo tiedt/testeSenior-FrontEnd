@@ -1,7 +1,9 @@
 export class ComprasModel {
-    public idCompra?: number;
-    public nomeDoSolicitante: string;
-    public valorDoItem: number;
-    public descricaoDoItem: string;
-    public situacaoDoItem: number;
+    public idCompras?: number;
+    public nomeSolicitante: string;
+    public valor: number;
+    public descricao: string;
+    public situacaoSolicitacaoCompra: number;
+    public dataSolicitacao: any;
+    public descricaoReprovacao?: string;
 }

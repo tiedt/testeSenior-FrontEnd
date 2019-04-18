@@ -8,14 +8,14 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { HttpClientModule  } from '@angular/common/http';
 import { ServicesMessages, Notificacao } from './services/service-mensagem';
 import { ConsultarComprasComponent } from './pages/cadastros/compras/consultar/consultar-compras.component';
-import { ComprasPainelComponent } from './pages/cadastros/compras/compras-painel/compras-painel.component';
 // tslint:disable-next-line:max-line-length
 import { GrowlModule, ConfirmDialogModule, ConfirmationService, DialogModule, DropdownModule, AutoCompleteModule, CalendarModule} from 'primeng/primeng';
+import { AlmoxarifadoComponent } from './pages/cadastros/almoxarifado/almoxarifado.component';
 @NgModule({
   declarations: [
     AppComponent,
     ConsultarComprasComponent,
-    ComprasPainelComponent
+    AlmoxarifadoComponent
   ],
   imports: [
     BrowserAnimationsModule,

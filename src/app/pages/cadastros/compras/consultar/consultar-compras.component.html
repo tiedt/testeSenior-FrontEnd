@@ -16,36 +16,38 @@
         </tr>
     </thead>
 
-    <!-- <tbody>
-        <tr *ngFor="let business of businesses">
-            <td>{{ business.person_name }}</td>
-            <td>{{ business.business_name }}</td>
-            <td>{{ business.business_gst_number }}</td>
-            <td><a [routerLink]="['/edit', business._id]" class="btn btn-primary">Edit</a></td>
-            <td><a [routerLink]="" class="btn btn-danger">Delete</a></td>
+     <tbody>
+        <tr *ngFor="let item of data">
+            <td>{{ item.nomeSolicitante }}</td>
+            <td>{{ item.valor }}</td>
+            <td>{{ item.descricao }}</td>
+            <td>
+              <a class="btn btn-primary" (click)="editar(item.idCompras)" style="color:white">Editar</a>
+              <a class="btn btn-danger" (click)="remover(item.idCompras)" style="color:white">Remover</a>
+            </td>
         </tr>
-    </tbody> -->
+    </tbody> 
 </table>
 
 <p-dialog header="Solicitar Compra" [(visible)]="display" [style]="{'width' : '750px'}" [formGroup]="form">
     <div class="form-group">
-        <input required type="text" class="form-control" id="nomeDoSolicitante" name="nomeDoSolicitante"
-          formControlName="nomeDoSolicitante"  placeholder="Nome do Solicitante" required />
-        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('nomeDoSolicitante').valid">
+        <input required type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante"
+          formControlName="nomeSolicitante"  placeholder="Nome do Solicitante" required />
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('nomeSolicitante').valid">
           <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
         </div>
       </div>
     
       <div class="form-group">
-        <input required type="text" class="form-control" id="valorDoItem" name="valorDoItem" formControlName="valorDoItem"
+        <input required type="text" class="form-control" id="valor" name="valor" formControlName="valor"
           currencyMask [options]="{ align: 'left' , prefix: 'R$ ', thousands: '.', decimal: ','}"  placeholder="Valor do Item"/>
-        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('valorDoItem').valid">
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('valor').valid">
           <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
         </div>
       </div>
     
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Descrição do Item" id="descricaoDoItem" name="descricaoDoItem" formControlName="descricaoDoItem"/>
+        <input type="text" class="form-control" placeholder="Descrição do Item" id="descricao" name="descricao" formControlName="descricao"/>
       </div>
       <p-footer>
         <div class="pull-right">
