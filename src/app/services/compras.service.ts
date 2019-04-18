@@ -8,11 +8,11 @@ import { ComprasModel } from '../models/comprasModel';
   providedIn: 'root'
 })
 export class ComprasService {
-  
+
   constructor(private http: HttpClient) { }
 
   adicionarCompra(model: ComprasModel): Observable<any> {
-    return this.http.post(`$this.url/add`, model);
+    return this.http.post(`http://localhost:3000/compras/post`, model);
   }
   editarCompra(model: ComprasModel): Observable<any> {
     return this.http.put(`$this.url/add`, model);

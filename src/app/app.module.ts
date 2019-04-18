@@ -4,17 +4,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CurrencyMaskModule } from "ng2-currency-mask";
-import { HttpClientModule  } from '@angular/common/http'; 
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { HttpClientModule  } from '@angular/common/http';
 import { ServicesMessages, Notificacao } from './services/service-mensagem';
-import { CriarComprasComponent } from './pages/cadastros/compras/criar/criar-compras.component';
 import { ConsultarComprasComponent } from './pages/cadastros/compras/consultar/consultar-compras.component';
 import { ComprasPainelComponent } from './pages/cadastros/compras/compras-painel/compras-painel.component';
-import { GrowlModule,ConfirmDialogModule,ConfirmationService,DialogModule,DropdownModule,AutoCompleteModule,CalendarModule} from 'primeng/primeng';
+// tslint:disable-next-line:max-line-length
+import { GrowlModule, ConfirmDialogModule, ConfirmationService, DialogModule, DropdownModule, AutoCompleteModule, CalendarModule} from 'primeng/primeng';
 @NgModule({
   declarations: [
     AppComponent,
-    CriarComprasComponent,
     ConsultarComprasComponent,
     ComprasPainelComponent
   ],
