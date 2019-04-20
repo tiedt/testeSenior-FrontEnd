@@ -32,7 +32,7 @@ export class ConsultarComprasComponent extends BaseCadastroComponent implements 
       .finally(() => this.loading = false)
       .subscribe(response => this.data = response,
         error => this.servicesMessages.handleError(error));
-    this.carergarModel();
+    this.carregarModel();
   }
 
   criarFormulario() {
@@ -44,9 +44,10 @@ export class ConsultarComprasComponent extends BaseCadastroComponent implements 
   }
   novo() {
     this.display = true;
-    this.carergarModel();
+    this.idCompras = undefined;
+     this.criarFormulario();
   }
-  carergarModel() {
+  carregarModel() {
     if (this.idCompras) {
       this.serviceCompra.obterCompraPorId(this.idCompras)
         .subscribe(response => {
@@ -60,6 +61,7 @@ export class ConsultarComprasComponent extends BaseCadastroComponent implements 
       this.criarFormulario();
     }
   }
+
   editar(idCompras: any) {
     this.display = true;
     this.idCompras = idCompras;
@@ -104,8 +106,11 @@ export class ConsultarComprasComponent extends BaseCadastroComponent implements 
     }
   }
   aposSalvar(response: any) {
-    // this.servicesMessages.notificacao.exibirMensagemDeSucesso('Solicitação de Compra Realizada com Sucesso');
+     this.servicesMessages.notification.exibirMensagemDeSucesso('Solicitação de Compra Realizada com Sucesso');
     this.display = false;
     this.ngOnInit();
+  }
+  close() {
+    this.display = false;
   }
 }

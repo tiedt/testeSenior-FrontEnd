@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ConsultarComprasComponent } from './pages/cadastros/compras/consultar/consultar-compras.component';
-import { AlmoxarifadoComponent } from './pages/cadastros/almoxarifado/almoxarifado.component';
+import { AlmoxarifadoComponent } from './pages/cadastros/almoxarifado/consultar/almoxarifado.component';
+import { AdminstrativoComponent } from './pages/cadastros/adminstrativo/criar/adminstrativo.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
       {
         path: 'compras/almoxarifado',
         component: AlmoxarifadoComponent
+      },
+      {
+        path: 'compras/adminstrativo',
+        component: AdminstrativoComponent
       }
     ]
   },

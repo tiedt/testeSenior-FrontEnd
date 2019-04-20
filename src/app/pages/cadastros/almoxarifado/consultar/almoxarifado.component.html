@@ -1,0 +1,67 @@
+<br>
+<br>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Nome do Solicitante</td>
+            <td>Valor do Item</td>
+            <td>Descrição do Item</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let item of data">
+            <td>{{ item.nomeSolicitante }}</td>
+            <td>{{ item.valor }}</td>
+            <td>{{ item.descricao }}</td>
+            <td><a class="btn btn-success" (click)="aprovar(item.idCompras)" style="color:white">Aprovar</a></td>
+            <td><a class="btn btn-danger" (click)="reprovar(item.idCompras)" style="color:white">Reprovar</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<p-dialog header="Solicitar Compra" [(visible)]="display" [style]="{'width' : '750px'}" [formGroup]="form">
+    <div class="form-group">
+        <input disabled required type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante"
+            formControlName="nomeSolicitante" placeholder="Nome do Solicitante" required />
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('nomeSolicitante').valid">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input disabled required type="text" class="form-control" id="valor" name="valor" formControlName="valor"
+            currencyMask [options]="{ align: 'left' , prefix: 'R$ ', thousands: '.', decimal: ','}"
+            placeholder="Valor do Item" />
+        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('valor').valid">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input disabled type="text" class="form-control" placeholder="Descrição do Item" id="descricao" name="descricao"
+            formControlName="descricao" />
+    </div>
+
+    <div class="form-group" *ngIf="this.observacaoReprovacao === true">
+        <input type="text" class="form-control" placeholder="Observações" id="descricaoReprovacao" name="descricaoReprovacao"
+            formControlName="descricaoReprovacao" />
+    </div>
+    <p-footer>
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" (click)="close()" id="idBtnFecharObjeto">
+                <i class="zmdi zmdi-close-circle"></i> Fechar
+            </button>
+            <button *ngIf="this.btnAprovar === true" type="button" class="btn btn-success"
+                (click)="confirmarAprovacao()" id="idBtnSalvarObjeto">
+                <i class="zmdi zmdi-shield-check"></i> Confirmar Aprovação
+            </button>
+            <button *ngIf="this.btnReprovar === true" type="button" class="btn btn-warning"
+            (click)="confirmarReprovacao()" id="idBtnSalvarObjeto">
+            <i class="zmdi zmdi-shield-check"></i> Confirmar Reprovação
+        </button>
+        </div>
+    </p-footer>
+</p-dialog>
