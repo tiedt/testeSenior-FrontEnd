@@ -33,4 +33,13 @@ export class ComprasService {
   obterComprasEmEspera(): Observable<any> {
    return this.http.get(`http://localhost:5007/v1/compras/obter-compras-em-espera`)
   }
+  obterComprasAprovada(): Observable<any> {
+    return this.http.get(`http://localhost:5007/v1/compras/obter-compras-aprovada`)
+   }
+   obterComprasReprovada(): Observable<any> {
+    return this.http.get(`http://localhost:5007/v1/compras/obter-compras-reprovada`)
+   }
+   consulta(consulta: any): Observable<any> {
+    return this.http.get(`http://localhost:5007/v1/compras/consulta`, consulta)
+   }
 }

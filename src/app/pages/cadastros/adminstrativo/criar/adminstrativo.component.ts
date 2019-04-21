@@ -51,4 +51,31 @@ export class AdminstrativoComponent extends BaseCadastroComponent implements OnI
     });
   }
 
+  buscaAprovados() {
+    this.serviceCompra.obterComprasAprovada()
+      .finally(() => this.loading = false)
+      .subscribe(response => this.data = response,
+        error => this.servicesMessages.handleError(error));
+  }
+  buscaReprovados() {
+    this.serviceCompra.obterComprasReprovada()
+      .finally(() => this.loading = false)
+      .subscribe(response => this.data = response,
+        error => this.servicesMessages.handleError(error));
+  }
+  buscaPendentes() {
+    this.serviceCompra.obterComprasEmEspera()
+      .finally(() => this.loading = false)
+      .subscribe(response => this.data = response,
+        error => this.servicesMessages.handleError(error));
+  }
+  buscarConsulta() {
+    const elementoBarra = this.form.get('txt_consulta').value;
+    this.serviceCompra.consulta(elementoBarra)
+      .finally(() => this.loading = false)
+      .subscribe(response => this.data = response,
+        error => this.servicesMessages.handleError(error));
+  }
 }
+
+
