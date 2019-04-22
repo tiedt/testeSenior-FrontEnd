@@ -19,7 +19,7 @@
      <tbody>
         <tr *ngFor="let item of data">
             <td>{{ item.nomeSolicitante }}</td>
-            <td>{{ item.valor }}</td>
+            <td>{{'R$ ' + (item.valor).toLocaleString('pt-BR', {minimumFractionDigits: 2})}}</td>
             <td>{{ item.descricao }}</td>
             <td>
               <a class="btn btn-primary" (click)="editar(item.idCompras)" style="color:white">Editar</a>
@@ -33,17 +33,11 @@
     <div class="form-group">
         <input required type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante"
           formControlName="nomeSolicitante"  placeholder="Nome do Solicitante" required />
-        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('nomeSolicitante').valid">
-          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
-        </div>
       </div>
     
       <div class="form-group">
         <input required type="text" class="form-control" id="valor" name="valor" formControlName="valor"
           currencyMask [options]="{ align: 'left' , prefix: 'R$ ', thousands: '.', decimal: ','}"  placeholder="Valor do Item"/>
-        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted && !form.get('valor').valid">
-          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Campo obrigatório.
-        </div>
       </div>
     
       <div class="form-group">

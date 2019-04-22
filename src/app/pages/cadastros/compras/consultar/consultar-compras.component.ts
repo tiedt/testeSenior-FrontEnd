@@ -45,7 +45,7 @@ export class ConsultarComprasComponent extends BaseCadastroComponent implements 
   novo() {
     this.display = true;
     this.idCompras = undefined;
-     this.criarFormulario();
+    this.criarFormulario();
   }
   carregarModel() {
     if (this.idCompras) {
@@ -79,10 +79,26 @@ export class ConsultarComprasComponent extends BaseCadastroComponent implements 
     this.serviceCompra.excluirCompra(idCompras)
       .finally(() => this.ngOnInit())
       .subscribe(item => { });
+    this.servicesMessages.notification.exibirMensagemDeSucesso('Solicitação de Compra Removida com Sucesso');
   }
 
   salvar() {
     this.submited = true;
+    const descricao = this.form.get('descricao').value;
+    if (descricao === null) {
+      this.servicesMessages.notification.exibirMensagemDeErro('A Descrição não foi informada');
+      return;
+    }
+    const nomeSolicitante = this.form.get('nomeSolicitante').value;
+    if (nomeSolicitante === null) {
+      this.servicesMessages.notification.exibirMensagemDeErro('O Nome do Solicitante não foi informado');
+      return;
+    }
+    const valor = this.form.get('valor').value;
+    if (valor === null) {
+      this.servicesMessages.notification.exibirMensagemDeErro('O Valor não foi informado');
+      return;
+    }
     if (this.form.valid) {
       this.comprasModel = new ComprasModel();
       this.comprasModel.idCompras = this.idCompras;
@@ -106,7 +122,7 @@ export class ConsultarComprasComponent extends BaseCadastroComponent implements 
     }
   }
   aposSalvar(response: any) {
-     this.servicesMessages.notification.exibirMensagemDeSucesso('Solicitação de Compra Realizada com Sucesso');
+    this.servicesMessages.notification.exibirMensagemDeSucesso('Solicitação de Compra Realizada com Sucesso');
     this.display = false;
     this.ngOnInit();
   }

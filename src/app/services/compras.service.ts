@@ -31,15 +31,15 @@ export class ComprasService {
   //          Almoxarifado
 
   obterComprasEmEspera(): Observable<any> {
-   return this.http.get(`http://localhost:5007/v1/compras/obter-compras-em-espera`)
+   return this.http.get(`http://localhost:5007/v1/compras/obter-compras-em-espera`);
   }
   obterComprasAprovada(): Observable<any> {
-    return this.http.get(`http://localhost:5007/v1/compras/obter-compras-aprovada`)
+    return this.http.get(`http://localhost:5007/v1/compras/obter-compras-aprovada`);
    }
    obterComprasReprovada(): Observable<any> {
-    return this.http.get(`http://localhost:5007/v1/compras/obter-compras-reprovada`)
+    return this.http.get(`http://localhost:5007/v1/compras/obter-compras-reprovada`);
    }
-   consulta(consulta: any): Observable<any> {
-    return this.http.get(`http://localhost:5007/v1/compras/consulta`, consulta)
+   consulta(teste: string): Observable<any> {
+    return this.http.get(`http://localhost:5007/v1/compras/consulta${teste}`);
    }
 }

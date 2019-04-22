@@ -1,9 +1,9 @@
 <br>
 
-  <div class="form-group input-group col-md-8">
+  <div class="form-group input-group col-md-8" (ngSubmit)="buscarConsulta(consulta.value)">
     <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-    <input name="consulta" id="txt_consulta" placeholder="Consultar" type="text" class="form-control"style="margin-right:1px">
-    <button class="btn btn-secondary" style="margin-right:15px" (click)="buscarConsulta()">Buscar</button>
+  <!--  <input name="consulta" id="txt_consulta" placeholder="consulta" type="text" class="form-control"style="margin-right:1px">
+    <button class="btn btn-secondary" style="margin-right:15px" (click)="buscarConsulta()">Buscar</button> -->
     <button class="btn btn-success" style="margin-right:15px" (click)="buscaAprovados()">Aprovados</button>
     <button class="btn btn-danger" style="margin-right:15px" (click)="buscaReprovados()">Reprovados</button>
     <button class="btn btn-warning" (click)="buscaPendentes()">Pendentes</button>
@@ -26,9 +26,9 @@
   <tbody>
     <tr *ngFor="let item of data">
       <td>{{ item.nomeSolicitante }}</td>
-      <td>{{ item.valor }}</td>
+      <td>{{'R$ ' + (item.valor).toLocaleString('pt-BR', {minimumFractionDigits: 2})}}</td>
       <td>{{ item.descricao }}</td>
-      <td>{{ item.situacaoSolicitacaoCompra }}</td>
+      <td>{{ obterTipoSituacao (item.situacaoSolicitacaoCompra) }}</td>
       <td>{{ item.descricaoReprovacao }}</td>
     </tr>
   </tbody>

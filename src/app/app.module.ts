@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { AdminstrativoComponent } from './pages/cadastros/adminstrativo/criar/ad
 import { NotificationsComponent } from './services/notifications-component';
 import { NotificationsService } from './services/notificacao-mensagem';
 import { LoadingService } from './services/loading-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,10 +39,11 @@ import { LoadingService } from './services/loading-service';
     CalendarModule
   ],
   providers: [
-     ServicesMessages, 
-     ConfirmationService , 
+     ServicesMessages,
+     ConfirmationService ,
      NotificationsService,
-     LoadingService
+     LoadingService,
+     {provide: LOCALE_ID, useValue: 'pt'}
      ],
   bootstrap: [AppComponent]
 })

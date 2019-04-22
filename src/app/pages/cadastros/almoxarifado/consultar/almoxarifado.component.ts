@@ -58,8 +58,13 @@ export class AlmoxarifadoComponent extends BaseCadastroComponent implements OnIn
       });
   }
 
-  aposSalvar(response: any) {
-    // this.servicesMessages.notificacao.exibirMensagemDeSucesso('Solicitação de Compra Realizada com Sucesso');
+  aposSalvarAprovacao(response: any) {
+    this.servicesMessages.notification.exibirMensagemDeSucesso('Item Aprovado com Sucesso');
+    this.display = false;
+    this.ngOnInit();
+  }
+  aposSalvarReprovacao(response: any) {
+    this.servicesMessages.notification.exibirMensagemDeSucesso('Item Reprovado com Sucesso');
     this.display = false;
     this.ngOnInit();
   }
@@ -98,7 +103,7 @@ export class AlmoxarifadoComponent extends BaseCadastroComponent implements OnIn
         this.comprasModel.idCompras = this.idCompras;
         this.serviceCompra.editarCompra(this.comprasModel)
           .finally(() => this.loading = false)
-          .subscribe(response => this.aposSalvar(response),
+          .subscribe(response => this.aposSalvarAprovacao(response),
             error => this.servicesMessages.handleError(error));
       }
     }
@@ -131,7 +136,7 @@ export class AlmoxarifadoComponent extends BaseCadastroComponent implements OnIn
         this.comprasModel.idCompras = this.idCompras;
         this.serviceCompra.editarCompra(this.comprasModel)
           .finally(() => this.loading = false)
-          .subscribe(response => this.aposSalvar(response),
+          .subscribe(response => this.aposSalvarReprovacao(response),
             error => this.servicesMessages.handleError(error));
       }
     }

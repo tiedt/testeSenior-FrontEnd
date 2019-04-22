@@ -5,7 +5,6 @@ import { BaseCadastroComponent } from 'src/shared/base/base-component';
 import { ComprasModel } from 'src/app/models/comprasModel';
 import { AutoSaveFormGroup } from 'src/shared/base/auto-save-form-group';
 import { FormControl } from '@angular/forms';
-
 @Component({
   selector: 'app-adminstrativo',
   templateUrl: './adminstrativo.component.html',
@@ -15,6 +14,7 @@ export class AdminstrativoComponent extends BaseCadastroComponent implements OnI
 
   public comprasModel: ComprasModel;
   public idCompras: number;
+  public consulta: string;
   public loading = false;
   constructor(private serviceCompra: ComprasService,
     private servicesMessages: ServicesMessages) {
@@ -69,12 +69,19 @@ export class AdminstrativoComponent extends BaseCadastroComponent implements OnI
       .subscribe(response => this.data = response,
         error => this.servicesMessages.handleError(error));
   }
-  buscarConsulta() {
-    const elementoBarra = this.form.get('txt_consulta').value;
-    this.serviceCompra.consulta(elementoBarra)
+ /* buscarConsulta() {
+    this.serviceCompra.consulta(this.consulta)
       .finally(() => this.loading = false)
       .subscribe(response => this.data = response,
         error => this.servicesMessages.handleError(error));
+  } */
+
+  obterTipoSituacao(situacaoSolicitacaoCompra: string): string {
+    switch (situacaoSolicitacaoCompra.toString()) {
+      case '1': return 'Pendente de Aprovação';
+      case '2': return 'Aprovado';
+      case '3': return 'Reprovado';
+    }
   }
 }
 
